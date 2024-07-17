@@ -1,0 +1,4 @@
+#include <main.h>
+
+int sayac = 0;
+while(TRUE)

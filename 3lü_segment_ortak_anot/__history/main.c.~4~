@@ -1,0 +1,14 @@
+#include <main.h>
+
+int sayi[3] = {0b10110011, 0b11010000, ob11100111}
+
+void main()
+{
+   
+   set_tris_c(0x00);
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

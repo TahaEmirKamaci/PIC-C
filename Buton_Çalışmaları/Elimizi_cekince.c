@@ -1,0 +1,17 @@
+#include <Elimizi_cekince.h>
+
+void main()
+{
+   set_tris_a(0xff);
+   set_tris_b(0x00000000);
+  
+   output_b(0x00);
+while(1){
+  while(input(pin_A0)==0){
+   while(input(pin_A0)==1){
+      output_high(pin_B0);
+  
+  }
+  } 
+}   
+}

@@ -1,0 +1,18 @@
+#include <main.h>
+
+void main()
+{
+   set_tris_a(0x00);
+   set_tris_a(0xff);
+   output_b(0x00);
+   while(input(pin_A1) == 0);
+   output_HIGH(pin_B4);
+   
+   if(input(pin_A2) == 1) {
+      output_low(pin_b4);   
+   }
+         
+   
+         
+
+}

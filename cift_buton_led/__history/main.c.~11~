@@ -1,0 +1,19 @@
+#include <main.h>
+
+void main()
+{
+   output_b(0x00);
+   while(input(pin_A1) == 0)
+   { 
+      output_HIGH(pin_B4);
+         
+         if(input(pin_A2)) {
+            output_LOW(pin_b4);
+            delay_ms(1000); 
+         }
+         
+         
+
+   }
+
+}

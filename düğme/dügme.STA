@@ -1,0 +1,44 @@
+
+ROM used:   44/16384 (0%)
+            44/16384 (0%) including unused fragments
+
+            0.1 Average locations per line
+            4.9 Average locations per statement
+
+RAM used:   5/1536 (0%) at main() level
+            5/1536 (0%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   15     9 100  dügme.c
+  701     0   0  ..\..\..\..\Program Files (x86)\PICC\Devices\18f452.h
+----- -----
+  716     9 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     40  45    1   141  3.0  main
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               1
+    Statements              9
+    Comments                121
+    Volume (V)              143
+    Difficulty (D)          2.8
+    Effort to implement (E) 400
+    Time to implement (T)   0 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    61
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-07FFE    40  32724  
+
+
+

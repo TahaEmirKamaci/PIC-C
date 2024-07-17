@@ -1,0 +1,16 @@
+#include <main.h>
+
+void main()
+{
+   
+   set_tris_b(0x00);
+   output_b(0x00);
+   
+   //Yatay kýrmýzý dikey yeþil
+   output_b(0b00010001);
+   while(TRUE)
+   {
+      
+   }
+
+}

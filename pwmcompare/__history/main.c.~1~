@@ -1,0 +1,23 @@
+#include <main.h>
+
+#INT_CCP1
+void  CCP1_isr(void) 
+{
+
+}
+
+void main()
+{
+	setup_timer_1(T1_EXTERNAL|T1_DIV_BY_1);		//65,5 ms overflow
+
+	setup_ccp1(CCP_COMPARE_RESET_TIMER);
+
+	enable_interrupts(INT_CCP1);
+	enable_interrupts(GLOBAL);
+
+	while(TRUE)
+	{
+		//TODO: User Code
+	}
+
+}

@@ -1,0 +1,56 @@
+[PROJECT]
+Target=2204.hex
+Processor_Text=PIC18F452
+CCSVerions=5.007
+Compiler=PCH
+Development_Mode=
+ToolSuite=CCS
+CCSVersion=5.007
+[Target Data]
+FileList=2204.c
+BuildTool=C-COMPILER
+OptionString=+FH
+AdditionalOptionString=
+BuildRequired=1
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\;C:\Users\Bengi\Desktop\uygulamalar\Mikroiþlemciler\;C:\Users\Bengi\Desktop\uygulamalar\Mikroiþlemciler\2204Step\
+Library=
+LinkerScript=
+[C:\Users\Bengi\Desktop\uygulamalar\Mikroiþlemciler\2204]
+Type=4
+[mru-list]
+1=2204.c
+[defines]
+enabled=0
+chip=1
+D1=
+V1=
+[fileformats]
+forcecoff=1
+debug=4
+error=2
+object=0
+list=0
+scratch=0
+sta=1
+tre=1
+allerrors=1
+allwarnings=1
+stayupne=3
+stayupoe=0
+[2204.c]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+[Opened Files]
+1=2204.c
+2=
+3=
+[Units]
+Count=1
+1=2204 (main)

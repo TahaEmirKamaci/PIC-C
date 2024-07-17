@@ -1,0 +1,25 @@
+#include <main.h>
+
+#INT_EXT
+void  EXT_isr(void) 
+{
+
+}
+
+void main()
+{
+
+   enable_interrupts(INT_EXT);
+   enable_interrupts(GLOBAL);
+
+   set_tris_b(0xFF);
+   set_tris_d(0x00);
+   
+   output_d(0x00);
+   
+   while(TRUE)
+   {
+      output_high(pin_d0);
+   }
+
+}

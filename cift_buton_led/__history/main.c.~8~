@@ -1,0 +1,22 @@
+#include <main.h>
+
+void main()
+{
+   output_b(0x00);
+   while(input_state(pin_A1) == 0)
+   {
+      if() { 
+            output_HIGH(pin_B4);
+            delay_ms(1000);
+         }
+         
+         if(input_state(pin_A2)) {
+            output_LOW(pin_b4);
+            delay_ms(1000); 
+         }
+         
+         
+
+   }
+
+}

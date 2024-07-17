@@ -1,0 +1,39 @@
+#include <main.h>
+
+//int arr[3][10]= {{0b01010000, 0b0001, 0b0010, 0b0011, 0b0100, 0b0101, 0b0111, 0b1000, 0b1001, 0b1010},
+//{0b00110000, 0b0001, 0b0010, 0b0011, 0b0100, 0b0101, 0b0111, 0b1000, 0b1001, 0b1010},
+//{0b01100000, 0b0001, 0b0010, 0b0011, 0b0100, 0b0101, 0b0111, 0b1000, 0b1001, 0b1010}};
+
+
+//int tr_arr[3] = {0b00010000, 0b00100000, 0b01000000};
+
+int arr_a[3] = {0b00010011, 0b00100000, 0b01000111};
+
+int sayac;
+
+void main()
+{
+   set_tris_a(0xFF);
+   set_tris_c(0x00);
+   
+   output_c(0x00);
+   
+   while(TRUE)
+   { /*
+       output_c(arr[0][sayac]);
+      delay_ms(10);
+      output_c(arr[1][sayac]);
+      delay_ms(10);
+      output_c(arr[2][sayac]);
+      delay_ms(10);  */
+      
+      for(sayac = 0; sayac < 3; sayac++) {
+         
+      }
+      output_c(arr_a[sayac]);
+      delay_ms(10);
+      
+      
+   }
+
+}

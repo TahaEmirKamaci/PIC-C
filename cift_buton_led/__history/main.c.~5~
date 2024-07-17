@@ -1,0 +1,17 @@
+#include <main.h>
+
+void main()
+{
+   output_b(0x00);
+   while(TRUE)
+   {
+      if(input_state(pin_a1)) { // A1 pininin deðerinin kontrol ediyoruz
+         output_HIGH(pin_B4);
+         }
+         delay_ms(1000);
+         output_LOW(pin_b4);
+         delay_ms(1000); 
+
+   }
+
+}

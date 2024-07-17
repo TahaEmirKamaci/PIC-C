@@ -1,0 +1,34 @@
+#include <main.h>
+//Lcd öniþlemcileri
+#define use_portb_lcd TRUE
+#include <lcd.c>
+
+
+#INT_AD
+void  AD_isr(void) 
+{
+   output_high(pin_C5);
+   delay_ms(100);
+   output_low(pin_C5);
+}
+
+void main()
+{
+   set_tris_b(0x00);
+   set_tris_c(0x00);
+   set_tris_e(0xFF);
+   output_b(0x00);
+   output_c(0x00);
+   
+   
+   setup_adc_ports(ALL_ANALOG);
+
+   enable_interrupts(INT_AD);
+   enable_interrupts(GLOBAL);
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

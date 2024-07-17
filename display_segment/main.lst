@@ -1,0 +1,227 @@
+CCS PCH C Compiler, Version 5.007, 61971               19-Mar-24 11:20
+
+               Filename:   C:\Users\Bengi\Desktop\uygulamalar\Mikroiþlemciler\display_segment\main.lst
+
+               ROM used:   252 bytes (1%)
+                           Largest free fragment is 32516
+               RAM used:   6 (0%) at main() level
+                           17 (1%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+0000:  GOTO   002C
+.................... #include <main.h> 
+.................... #include <18F452.h> 
+.................... //////// Standard Header file for the PIC18F452 device //////////////// 
+.................... #device PIC18F452 
+....................  
+.................... #list 
+....................  
+.................... #device ADC=16 
+....................  
+.................... #FUSES NOWDT                    //No Watch Dog Timer 
+.................... #FUSES WDT128                   //Watch Dog Timer uses 1:128 Postscale 
+.................... #FUSES NOBROWNOUT               //No brownout reset 
+.................... #FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+....................  
+.................... #use delay(crystal=4000000) 
+0004:  CLRF   FEA
+0006:  MOVLW  10
+0008:  MOVWF  FE9
+000A:  MOVF   FEF,W
+000C:  BZ    002A
+000E:  MOVLW  01
+0010:  MOVWF  01
+0012:  CLRF   00
+0014:  DECFSZ 00,F
+0016:  BRA    0014
+0018:  DECFSZ 01,F
+001A:  BRA    0012
+001C:  MOVLW  4A
+001E:  MOVWF  00
+0020:  DECFSZ 00,F
+0022:  BRA    0020
+0024:  BRA    0026
+0026:  DECFSZ FEF,F
+0028:  BRA    000E
+002A:  RETURN 0
+.................... #use FIXED_IO( C_outputs=PIN_C7,PIN_C6,PIN_C5,PIN_C4,PIN_C3,PIN_C2,PIN_C1,PIN_C0 ) 
+.................... #use fast_io(a) 
+....................  
+....................  
+.................... int sayac = 0; 
+....................  
+.................... void main() 
+002C:  CLRF   FF8
+002E:  BCF    FD0.7
+0030:  CLRF   04
+0032:  BSF    FC1.0
+0034:  BSF    FC1.1
+0036:  BSF    FC1.2
+0038:  BCF    FC1.3
+.................... { 
+....................     
+....................    set_tris_a(0xFF); 
+003A:  MOVLW  FF
+003C:  MOVWF  F92
+....................    set_tris_b(0x00); 
+003E:  MOVLW  00
+0040:  MOVWF  F93
+....................    output_c(0x00); 
+0042:  CLRF   F94
+0044:  CLRF   F8B
+....................  
+....................    int arr[11] ={0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0x77}; 
+0046:  MOVLW  3F
+0048:  MOVWF  05
+004A:  MOVLW  06
+004C:  MOVWF  06
+004E:  MOVLW  5B
+0050:  MOVWF  07
+0052:  MOVLW  4F
+0054:  MOVWF  08
+0056:  MOVLW  66
+0058:  MOVWF  09
+005A:  MOVLW  6D
+005C:  MOVWF  0A
+005E:  MOVLW  7D
+0060:  MOVWF  0B
+0062:  MOVLW  07
+0064:  MOVWF  0C
+0066:  MOVLW  7F
+0068:  MOVWF  0D
+006A:  MOVLW  6F
+006C:  MOVWF  0E
+006E:  MOVLW  77
+0070:  MOVWF  0F
+....................     
+....................    output_c(arr[sayac]); 
+0072:  CLRF   03
+0074:  MOVF   04,W
+0076:  ADDLW  05
+0078:  MOVWF  FE9
+007A:  MOVLW  00
+007C:  ADDWFC 03,W
+007E:  MOVWF  FEA
+0080:  MOVFF  FEF,10
+0084:  CLRF   F94
+0086:  MOVFF  10,F8B
+....................     
+....................    while(TRUE) 
+....................    { 
+....................        
+....................        
+....................       if(input(pin_A0)==1)      // basýlana kadar bekle 
+008A:  BTFSS  F80.0
+008C:  BRA    00C0
+....................       { 
+....................          delay_ms(20); 
+008E:  MOVLW  14
+0090:  MOVWF  10
+0092:  RCALL  0004
+....................          sayac++; 
+0094:  INCF   04,F
+....................          if(sayac==11) 
+0096:  MOVF   04,W
+0098:  SUBLW  0B
+009A:  BNZ   009E
+....................          sayac=0;          // sayac sýnýrýný belirledik 
+009C:  CLRF   04
+....................          output_c(arr[sayac]); 
+009E:  CLRF   03
+00A0:  MOVF   04,W
+00A2:  ADDLW  05
+00A4:  MOVWF  FE9
+00A6:  MOVLW  00
+00A8:  ADDWFC 03,W
+00AA:  MOVWF  FEA
+00AC:  MOVFF  FEF,10
+00B0:  CLRF   F94
+00B2:  MOVFF  10,F8B
+....................          while(input(pin_A0)==1);      // el çekilene kadar bekle 
+00B6:  BTFSC  F80.0
+00B8:  BRA    00B6
+....................          delay_ms(20); 
+00BA:  MOVLW  14
+00BC:  MOVWF  10
+00BE:  RCALL  0004
+....................       } 
+....................       if(input(pin_A1)==1)      // basýlana kadar bekle 
+00C0:  BTFSS  F80.1
+00C2:  BRA    00F8
+....................       { 
+....................          delay_ms(20); 
+00C4:  MOVLW  14
+00C6:  MOVWF  10
+00C8:  RCALL  0004
+....................          sayac--; 
+00CA:  DECF   04,F
+....................          if(sayac==-1) 
+00CC:  MOVF   04,W
+00CE:  SUBLW  FF
+00D0:  BNZ   00D6
+....................          sayac=10;          // sayac sýnýrýný belirledik 
+00D2:  MOVLW  0A
+00D4:  MOVWF  04
+....................          output_c(arr[sayac]); 
+00D6:  CLRF   03
+00D8:  MOVF   04,W
+00DA:  ADDLW  05
+00DC:  MOVWF  FE9
+00DE:  MOVLW  00
+00E0:  ADDWFC 03,W
+00E2:  MOVWF  FEA
+00E4:  MOVFF  FEF,10
+00E8:  CLRF   F94
+00EA:  MOVFF  10,F8B
+....................          while(input(pin_A1)==1);      // el çekilene kadar bekle 
+00EE:  BTFSC  F80.1
+00F0:  BRA    00EE
+....................          delay_ms(20); 
+00F2:  MOVLW  14
+00F4:  MOVWF  10
+00F6:  RCALL  0004
+....................       } 
+00F8:  BRA    008A
+....................  
+....................        
+....................       /* 
+....................       output_c(arr[sayac]); 
+....................        
+....................       while(input(pin_A0) == 0); // basýlana kadar bekle 
+....................       delay_ms(20); 
+....................       sayac++; 
+....................        
+....................        
+....................        
+....................       if(input(pin_A0)) { 
+....................          delay_us(200); 
+....................          sayac++; 
+....................          delay_ms(100); 
+....................       } 
+....................       if (sayac == 11) { 
+....................          sayac = 0; 
+....................       } 
+....................        
+....................       output_c(arr[sayac]); 
+....................       while(input(pin_A0) == 1) // el çekilene kadar bekle 
+....................       delay_ms(20); 
+....................        
+....................        /*for(sayac = 0; sayac <10 ; sayac++) { 
+....................          output_c(arr[sayac]); 
+....................          delay_ms(300); 
+....................        }*/ 
+....................    } 
+....................  
+.................... } 
+00FA:  SLEEP 
+
+Configuration Fuses:
+   Word  1: 2100   XT NOOSCSEN
+   Word  2: 0E0C   PUT NOBROWNOUT BORV20 NOWDT WDT128
+   Word  3: 0100   CCP2C1
+   Word  4: 0081   STVREN NOLVP NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

@@ -1,0 +1,50 @@
+CCS PCH C Compiler, Version 5.007, 61971               04-Mar-24 15:22
+
+               Filename:   C:\z_ÖZEL\Ders\Mikroiþlemci_denemeleri\Ders_1\Led_yakma.lst
+
+               ROM used:   26 bytes (0%)
+                           Largest free fragment is 32742
+               RAM used:   4 (0%) at main() level
+                           4 (0%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+0000:  GOTO   0004
+.................... #include "18f452.h" 
+.................... //////// Standard Header file for the PIC18F452 device //////////////// 
+.................... #device PIC18F452 
+....................  
+.................... #list 
+....................  
+.................... #fuses XT,NOWDT,NOPROTECT,PUT 
+.................... #use delay (clock=4000000) 
+.................... #use fast_io(b) 
+....................  
+.................... void main (void) 
+0004:  CLRF   FF8
+0006:  BCF    FD0.7
+0008:  BSF    FC1.0
+000A:  BSF    FC1.1
+000C:  BSF    FC1.2
+000E:  BCF    FC1.3
+.................... { 
+....................    set_tris_b(0x00); //b portu çýkýþ yapldý 
+0010:  MOVLW  00
+0012:  MOVWF  F93
+....................    output_high(PIN_B1);// b1 yandý 
+0014:  BSF    F8A.1
+....................    while(true); 
+0016:  BRA    0016
+....................     
+.................... } 
+0018:  SLEEP 
+
+Configuration Fuses:
+   Word  1: 2100   XT NOOSCSEN
+   Word  2: 0E0E   PUT BROWNOUT BORV20 NOWDT WDT128
+   Word  3: 0100   CCP2C1
+   Word  4: 0081   STVREN NOLVP NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

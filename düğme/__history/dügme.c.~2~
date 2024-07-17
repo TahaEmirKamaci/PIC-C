@@ -1,0 +1,12 @@
+#include <16f877A.h> // Mikrodenetleyici tanýmlama dosyasýný ekliyoruz
+#use delay(crystal=20000000) // Kristal osilatör frekansýný giriyoruz
+ 
+void main(){ // ana fonksiyonumuz
+ while(TRUE){ // sonsuz döngümüz
+  if(INPUT(pin_B0) == TRUE){ // eðer B0 pini +5V ise
+   output_high(pin_C0); // C0 pinini +5V yap
+  }else{ // deðilse
+   output_low(pin_C0); // C0 pinini 0V yap
+  }
+ }
+}

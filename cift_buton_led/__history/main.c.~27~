@@ -1,0 +1,25 @@
+#include <main.h>
+
+void main()
+{
+   set_tris_a(0x00);
+   set_tris_a(0xff);
+   output_b(0x00);
+   
+   while(TRUE) {
+      if(input_state(pin_A1) == 1){
+         if(input_state(pin_A1) == 0) {
+            output_high(pin_b4);
+         }
+             
+         
+      }
+   
+      
+   }
+   
+         
+   
+         
+
+}

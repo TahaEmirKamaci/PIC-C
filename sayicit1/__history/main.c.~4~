@@ -1,0 +1,28 @@
+#include <main.h>
+
+#INT_TIMER1
+int sayac;
+void  TIMER1_isr(void) 
+{
+   sayac = sayac +1;
+   if(sayac == 16);
+   sayac = 0;
+   output_b(sayac);
+}
+
+void main()
+{
+   set_tris_b(0x00);
+   output_b(0x00);
+   setup_timer_1(T1_EXTERNAL|T1_DIV_BY_1);      //65,5 ms overflow
+
+
+   enable_interrupts(INT_TIMER1);
+   enable_interrupts(GLOBAL);
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

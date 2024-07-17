@@ -1,0 +1,82 @@
+CCS PCH C Compiler, Version 5.007, 61971               12-Mar-24 15:54
+
+               Filename:   C:\z_ÖZEL\Ders\PIC C denemeler\Buton_Çalýþmalarý\Elimizi_cekince.lst
+
+               ROM used:   56 bytes (0%)
+                           Largest free fragment is 32712
+               RAM used:   5 (0%) at main() level
+                           5 (0%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+0000:  GOTO   0004
+.................... #include <Elimizi_cekince.h> 
+.................... #include <18F452.h> 
+.................... //////// Standard Header file for the PIC18F452 device //////////////// 
+.................... #device PIC18F452 
+....................  
+.................... #list 
+....................  
+.................... #device ADC=16 
+....................  
+.................... #FUSES NOWDT                 	//No Watch Dog Timer 
+.................... #FUSES WDT128                	//Watch Dog Timer uses 1:128 Postscale 
+.................... #FUSES NOBROWNOUT            	//No brownout reset 
+.................... #FUSES NOLVP                 	//No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+....................  
+.................... #use delay(crystal=4MHz) 
+.................... #use FIXED_IO( B_outputs=PIN_B0 ) 
+....................  
+....................  
+....................  
+.................... void main() 
+0004:  CLRF   FF8
+0006:  BCF    FD0.7
+0008:  BSF    FC1.0
+000A:  BSF    FC1.1
+000C:  BSF    FC1.2
+000E:  BCF    FC1.3
+.................... { 
+....................    set_tris_a(0xff); 
+0010:  MOVLW  FF
+0012:  MOVWF  F92
+....................    set_tris_b(0x00000000); 
+0014:  MOVLW  00
+0016:  MOVWF  F93
+....................    
+....................    output_b(0x00); 
+0018:  MOVLW  FE
+001A:  MOVWF  F93
+001C:  CLRF   F8A
+.................... while(1){ 
+....................   while(input(pin_A0)==0){ 
+001E:  BSF    F92.0
+0020:  BTFSC  F80.0
+0022:  BRA    0034
+....................    while(input(pin_A0)==1){ 
+0024:  BSF    F92.0
+0026:  BTFSS  F80.0
+0028:  BRA    0032
+....................       output_high(pin_B0); 
+002A:  MOVLW  FE
+002C:  MOVWF  F93
+002E:  BSF    F8A.0
+0030:  BRA    0024
+....................    
+....................   } 
+0032:  BRA    001E
+....................   }  
+0034:  BRA    001E
+.................... }    
+.................... } 
+0036:  SLEEP 
+
+Configuration Fuses:
+   Word  1: 2100   XT NOOSCSEN
+   Word  2: 0E0C   PUT NOBROWNOUT BORV20 NOWDT WDT128
+   Word  3: 0100   CCP2C1
+   Word  4: 0081   STVREN NOLVP NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

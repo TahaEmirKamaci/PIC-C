@@ -1,0 +1,23 @@
+[PROJECT]
+Target=iki_dugme.hex
+Processor_Text=PIC18F452
+CCSVerions=5.007
+Compiler=PCH
+CCSVersion=5.007
+[Target Data]
+FileList=iki_dugme.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\;C:\z_ÖZEL\Ders\PIC C denemeler\Buton_Çalýþmalarý\
+[C:\z_ÖZEL\Ders\PIC C denemeler\Buton_Çalýþmalarý\iki_dugme]
+Type=4
+[mru-list]
+1=iki_dugme.c
+[Opened Files]
+1=iki_dugme.c
+2=main.c
+3=
+[iki_dugme.c]
+Type=4
+[Units]
+Count=1
+1=iki_dugme (main)

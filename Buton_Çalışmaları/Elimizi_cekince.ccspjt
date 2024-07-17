@@ -1,0 +1,23 @@
+[PROJECT]
+Target=Elimizi_cekince.hex
+Processor_Text=PIC18F452
+CCSVerions=5.007
+Compiler=PCH
+CCSVersion=5.007
+[Target Data]
+FileList=Elimizi_cekince.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\;C:\z_ÖZEL\Ders\PIC C denemeler\Buton_Çalýþmalarý\
+[C:\z_ÖZEL\Ders\PIC C denemeler\Buton_Çalýþmalarý\Elimizi_cekince]
+Type=4
+[mru-list]
+1=Elimizi_cekince.c
+[Opened Files]
+1=Elimizi_cekince.c
+2=iki_dugme.c
+3=
+[Elimizi_cekince.c]
+Type=4
+[Units]
+Count=1
+1=Elimizi_cekince (main)

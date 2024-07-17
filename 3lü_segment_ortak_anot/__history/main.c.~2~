@@ -1,0 +1,13 @@
+#include <main.h>
+
+int sayi[3] = {0b10110011, 0b11010000, ob11100111};
+
+void main()
+{
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

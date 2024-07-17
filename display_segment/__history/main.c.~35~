@@ -1,0 +1,27 @@
+#include <main.h>
+
+void main()
+{
+   
+   set_tris_a(0xFF);
+   set_tris_b(0x00);
+   output_c(0x00);
+
+   int arr[10] ={0x3F, 0x06, 0x5c, 0x4F, 0x66, 0x6E, 0x7E, 0x07, 0x7F, 0x6F};
+   int sayac = 0;
+   while(TRUE)
+   {
+      output_c(arr[sayac]);
+      if(input(pin_A0)) {
+         delay_us(200);
+         sayac++;
+      }
+      
+      
+       /*for(sayac = 0; sayac <10 ; sayac++) {
+         output_c(arr[sayac]);
+         delay_ms(300);
+       }*/
+   }
+
+}

@@ -1,0 +1,215 @@
+CCS PCM C Compiler, Version 5.007, 61971               25-Mar-24 15:31
+
+               Filename:   C:\Users\Bengi\Desktop\uygulamalar\Mikroiþlemciler\matris_led\main.lst
+
+               ROM used:   139 words (2%)
+                           Largest free fragment is 2048
+               RAM used:   27 (7%) at main() level
+                           30 (8%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   042
+0003:  NOP
+.................... #include <main.h> 
+.................... #include <16F877A.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+....................  
+.................... #list 
+....................  
+.................... #device ADC=16 
+....................  
+.................... #FUSES NOWDT                 	//No Watch Dog Timer 
+.................... #FUSES NOBROWNOUT            	//No brownout reset 
+.................... #FUSES NOLVP                 	//No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+....................  
+.................... #use delay(crystal=4000000) 
+*
+0029:  MOVLW  38
+002A:  MOVWF  04
+002B:  BCF    03.7
+002C:  MOVF   00,W
+002D:  BTFSC  03.2
+002E:  GOTO   03D
+002F:  MOVLW  01
+0030:  MOVWF  78
+0031:  CLRF   77
+0032:  DECFSZ 77,F
+0033:  GOTO   032
+0034:  DECFSZ 78,F
+0035:  GOTO   031
+0036:  MOVLW  4A
+0037:  MOVWF  77
+0038:  DECFSZ 77,F
+0039:  GOTO   038
+003A:  GOTO   03B
+003B:  DECFSZ 00,F
+003C:  GOTO   02F
+.................... #use FIXED_IO( B_outputs=PIN_B7,PIN_B6,PIN_B5,PIN_B4,PIN_B3,PIN_B2,PIN_B1,PIN_B0 ) 
+.................... #use FIXED_IO( C_outputs=PIN_C5,PIN_C4,PIN_C3,PIN_C2,PIN_C1,PIN_C0 ) 
+....................  
+....................  
+....................  
+.................... int sutun[5] = {0x10, 0x08, 0x04, 0x02, 0x01}; 
+*
+004C:  MOVLW  10
+004D:  BCF    03.5
+004E:  MOVWF  20
+004F:  MOVLW  08
+0050:  MOVWF  21
+0051:  MOVLW  04
+0052:  MOVWF  22
+0053:  MOVLW  02
+0054:  MOVWF  23
+0055:  MOVLW  01
+0056:  MOVWF  24
+....................  
+.................... int K[5] = {0x80, 0xF7, 0xEB, 0xDD, 0xBE}; 
+0057:  MOVLW  80
+0058:  MOVWF  25
+0059:  MOVLW  F7
+005A:  MOVWF  26
+005B:  MOVLW  EB
+005C:  MOVWF  27
+005D:  MOVLW  DD
+005E:  MOVWF  28
+005F:  MOVLW  BE
+0060:  MOVWF  29
+....................  
+.................... int T[5] = {0xFE, 0xFE, 0x80, 0xFE, 0xFE}; 
+0061:  MOVLW  FE
+0062:  MOVWF  2A
+0063:  MOVWF  2B
+0064:  MOVLW  80
+0065:  MOVWF  2C
+0066:  MOVLW  FE
+0067:  MOVWF  2D
+0068:  MOVWF  2E
+....................  
+.................... int U[5] = {0xC0, 0xBF, 0xBF, 0xBF, 0xC0}; 
+0069:  MOVLW  C0
+006A:  MOVWF  2F
+006B:  MOVLW  BF
+006C:  MOVWF  30
+006D:  MOVWF  31
+006E:  MOVWF  32
+006F:  MOVLW  C0
+0070:  MOVWF  33
+....................  
+....................  
+.................... int i, j; 
+....................  
+.................... void yaz(int harf[5]) { 
+....................    for(i = 0; i < 125; i++) { 
+*
+0004:  CLRF   34
+0005:  MOVF   34,W
+0006:  SUBLW  7C
+0007:  BTFSS  03.0
+0008:  GOTO   041
+....................       for(j = 0; j < 5; j++) { 
+0009:  CLRF   35
+000A:  MOVF   35,W
+000B:  SUBLW  04
+000C:  BTFSS  03.0
+000D:  GOTO   03F
+....................          output_b(harf[j]); 
+000E:  MOVF   35,W
+000F:  ADDWF  36,W
+0010:  MOVWF  04
+0011:  BCF    03.7
+0012:  BTFSC  37.0
+0013:  BSF    03.7
+0014:  MOVF   00,W
+0015:  MOVWF  38
+0016:  BSF    03.5
+0017:  CLRF   06
+0018:  BCF    03.5
+0019:  MOVF   38,W
+001A:  MOVWF  06
+....................          output_c(sutun[j]); 
+001B:  MOVLW  20
+001C:  ADDWF  35,W
+001D:  MOVWF  04
+001E:  BCF    03.7
+001F:  MOVF   00,W
+0020:  MOVWF  38
+0021:  MOVLW  C0
+0022:  BSF    03.5
+0023:  MOVWF  07
+0024:  BCF    03.5
+0025:  MOVF   38,W
+0026:  MOVWF  07
+....................          delay_ms(25); 
+0027:  MOVLW  19
+0028:  MOVWF  38
+*
+003D:  INCF   35,F
+003E:  GOTO   00A
+....................       } 
+003F:  INCF   34,F
+0040:  GOTO   005
+....................    } 
+0041:  RETURN
+.................... } 
+....................  
+.................... void main() 
+0042:  BSF    03.5
+0043:  BSF    1F.0
+0044:  BSF    1F.1
+0045:  BSF    1F.2
+0046:  BCF    1F.3
+0047:  MOVLW  07
+0048:  MOVWF  1C
+0049:  BCF    03.7
+004A:  MOVLW  1F
+004B:  ANDWF  03,F
+.................... { 
+....................    set_tris_c(0x00); 
+*
+0071:  MOVLW  00
+0072:  BSF    03.5
+0073:  MOVWF  07
+....................    set_tris_b(0x00); 
+0074:  MOVWF  06
+....................     
+....................    output_b(0x00); 
+0075:  CLRF   06
+0076:  BCF    03.5
+0077:  CLRF   06
+....................    output_c(0x00); 
+0078:  MOVLW  C0
+0079:  BSF    03.5
+007A:  MOVWF  07
+007B:  BCF    03.5
+007C:  CLRF   07
+....................  
+....................    while(TRUE) 
+....................    { 
+....................       yaz(K); 
+007D:  CLRF   37
+007E:  MOVLW  25
+007F:  MOVWF  36
+0080:  CALL   004
+....................       yaz(T); 
+0081:  CLRF   37
+0082:  MOVLW  2A
+0083:  MOVWF  36
+0084:  CALL   004
+....................       yaz(U); 
+0085:  CLRF   37
+0086:  MOVLW  2F
+0087:  MOVWF  36
+0088:  CALL   004
+0089:  GOTO   07D
+....................    } 
+....................  
+.................... } 
+008A:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F31   XT NOWDT PUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

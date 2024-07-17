@@ -1,0 +1,337 @@
+CCS PCH C Compiler, Version 5.007, 61971               19-Mar-24 16:02
+
+               Filename:   C:\Users\Bengi\Desktop\uygulamalar\Mikroiþlemciler\uclu_display_segment\main.lst
+
+               ROM used:   550 bytes (2%)
+                           Largest free fragment is 32218
+               RAM used:   75 (5%) at main() level
+                           80 (5%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+0000:  GOTO   0098
+.................... #include <main.h> 
+.................... #include <18F452.h> 
+.................... //////// Standard Header file for the PIC18F452 device //////////////// 
+.................... #device PIC18F452 
+0004:  MOVF   4A,W
+0006:  CLRF   01
+0008:  SUBWF  49,W
+000A:  BC    0012
+000C:  MOVFF  49,00
+0010:  BRA    002A
+0012:  CLRF   00
+0014:  MOVLW  08
+0016:  MOVWF  4B
+0018:  RLCF   49,F
+001A:  RLCF   00,F
+001C:  MOVF   4A,W
+001E:  SUBWF  00,W
+0020:  BTFSC  FD8.0
+0022:  MOVWF  00
+0024:  RLCF   01,F
+0026:  DECFSZ 4B,F
+0028:  BRA    0018
+002A:  RETURN 0
+002C:  CLRF   01
+002E:  CLRF   02
+0030:  CLRF   00
+0032:  CLRF   03
+0034:  MOVF   4E,W
+0036:  BNZ   003C
+0038:  MOVF   4D,W
+003A:  BZ    006C
+003C:  MOVLW  10
+003E:  MOVWF  4F
+0040:  BCF    FD8.0
+0042:  RLCF   4B,F
+0044:  RLCF   4C,F
+0046:  RLCF   00,F
+0048:  RLCF   03,F
+004A:  MOVF   4E,W
+004C:  SUBWF  03,W
+004E:  BNZ   0054
+0050:  MOVF   4D,W
+0052:  SUBWF  00,W
+0054:  BNC   0064
+0056:  MOVF   4D,W
+0058:  SUBWF  00,F
+005A:  BTFSS  FD8.0
+005C:  DECF   03,F
+005E:  MOVF   4E,W
+0060:  SUBWF  03,F
+0062:  BSF    FD8.0
+0064:  RLCF   01,F
+0066:  RLCF   02,F
+0068:  DECFSZ 4F,F
+006A:  BRA    0040
+006C:  GOTO   0168 (RETURN)
+....................  
+.................... #list 
+....................  
+.................... #device ADC=16 
+....................  
+.................... #FUSES NOWDT                 	//No Watch Dog Timer 
+.................... #FUSES WDT128                	//Watch Dog Timer uses 1:128 Postscale 
+.................... #FUSES NOBROWNOUT            	//No brownout reset 
+.................... #FUSES NOLVP                 	//No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+....................  
+.................... #use delay(crystal=4000000) 
+0070:  CLRF   FEA
+0072:  MOVLW  49
+0074:  MOVWF  FE9
+0076:  MOVF   FEF,W
+0078:  BZ    0096
+007A:  MOVLW  01
+007C:  MOVWF  01
+007E:  CLRF   00
+0080:  DECFSZ 00,F
+0082:  BRA    0080
+0084:  DECFSZ 01,F
+0086:  BRA    007E
+0088:  MOVLW  4A
+008A:  MOVWF  00
+008C:  DECFSZ 00,F
+008E:  BRA    008C
+0090:  BRA    0092
+0092:  DECFSZ FEF,F
+0094:  BRA    007A
+0096:  RETURN 0
+.................... #use FIXED_IO( B_outputs=PIN_B4 ) 
+.................... #use FIXED_IO( C_outputs=PIN_C6,PIN_C5,PIN_C4,PIN_C3,PIN_C2,PIN_C1,PIN_C0 ) 
+....................  
+....................  
+....................  
+.................... int16 arr_y[10]= {0b0010000, 0b00010001, 0b00010010, 0b00010011, 0b00010100, 0b00010101, 0b00010110, 0b00010111, 0b00011000, 0b00011001}; 
+....................  
+.................... int16 arr_o[10] = {0b0000, 0b00100001, 0b00100010, 0b00100011, 0b00100100, 0b00100101, 0b00100110, 0b00100111, 0b00101000, 0b00101001}; 
+....................  
+.................... int16 arr_b[10] = {0b01000000, 0b01000001, 0b01000010, 0b01000011, 0b01000100, 0b01000101, 0b01000110, 0b01000111, 0b01001000, 0b01001001}; 
+....................  
+.................... int16 birler, onlar, yuzler,zaman; 
+.................... //int arr_a[3] = {0b00010011, 0b00100000, 0b01000111}; 
+....................  
+.................... int sayac = 0; 
+....................  
+.................... void main() 
+0098:  CLRF   FF8
+009A:  BCF    FD0.7
+009C:  CLRF   48
+009E:  BSF    FC1.0
+00A0:  BSF    FC1.1
+00A2:  BSF    FC1.2
+00A4:  BCF    FC1.3
+00A6:  BRA    00E8
+00A8:  DATA 3C,00
+00AA:  DATA 04,10
+00AC:  DATA 00,11
+00AE:  DATA 00,12
+00B0:  DATA 00,13
+00B2:  DATA 00,14
+00B4:  DATA 00,15
+00B6:  DATA 00,16
+00B8:  DATA 00,17
+00BA:  DATA 00,18
+00BC:  DATA 00,19
+00BE:  DATA 00,00
+00C0:  DATA 00,21
+00C2:  DATA 00,22
+00C4:  DATA 00,23
+00C6:  DATA 00,24
+00C8:  DATA 00,25
+00CA:  DATA 00,26
+00CC:  DATA 00,27
+00CE:  DATA 00,28
+00D0:  DATA 00,29
+00D2:  DATA 00,40
+00D4:  DATA 00,41
+00D6:  DATA 00,42
+00D8:  DATA 00,43
+00DA:  DATA 00,44
+00DC:  DATA 00,45
+00DE:  DATA 00,46
+00E0:  DATA 00,47
+00E2:  DATA 00,48
+00E4:  DATA 00,49
+00E6:  DATA 00,00
+00E8:  MOVLW  00
+00EA:  MOVWF  FF8
+00EC:  MOVLW  00
+00EE:  MOVWF  FF7
+00F0:  MOVLW  A8
+00F2:  MOVWF  FF6
+00F4:  TBLRD*+
+00F6:  MOVF   FF5,W
+00F8:  MOVWF  00
+00FA:  XORLW  00
+00FC:  BZ    0124
+00FE:  TBLRD*+
+0100:  MOVF   FF5,W
+0102:  MOVWF  01
+0104:  BTFSC  FE8.7
+0106:  BRA    0112
+0108:  ANDLW  0F
+010A:  MOVWF  FEA
+010C:  TBLRD*+
+010E:  MOVFF  FF5,FE9
+0112:  BTFSC  01.6
+0114:  TBLRD*+
+0116:  BTFSS  01.6
+0118:  TBLRD*+
+011A:  MOVFF  FF5,FEE
+011E:  DCFSNZ 00,F
+0120:  BRA    00F4
+0122:  BRA    0116
+0124:  CLRF   FF8
+.................... { 
+....................    set_tris_a(0xFF); 
+0126:  MOVLW  FF
+0128:  MOVWF  F92
+....................    set_tris_c(0x00); 
+012A:  MOVLW  00
+012C:  MOVWF  F94
+....................     
+....................    output_c(0x00); 
+012E:  MOVLW  80
+0130:  MOVWF  F94
+0132:  CLRF   F8B
+....................     
+....................    while(sayac < 1000) 
+....................    {   
+....................       /*for(sayac = 0; sayac < 3; sayac++) {    
+....................          output_c(arr_a[sayac]); 
+....................          delay_ms(10); }*/ 
+....................           
+....................      birler = sayac % 10; //birler basamaðý 
+0134:  MOVFF  48,49
+0138:  MOVLW  0A
+013A:  MOVWF  4A
+013C:  RCALL  0004
+013E:  CLRF   41
+0140:  MOVFF  00,40
+....................      onlar = (sayac % 100 - birler) / 10; 
+0144:  MOVFF  48,49
+0148:  MOVLW  64
+014A:  MOVWF  4A
+014C:  RCALL  0004
+014E:  MOVF   40,W
+0150:  SUBWF  00,W
+0152:  MOVWF  49
+0154:  MOVLW  00
+0156:  SUBFWB 41,W
+0158:  MOVWF  4A
+015A:  MOVWF  4C
+015C:  MOVFF  49,4B
+0160:  CLRF   4E
+0162:  MOVLW  0A
+0164:  MOVWF  4D
+0166:  BRA    002C
+0168:  MOVFF  02,43
+016C:  MOVFF  01,42
+....................      yuzler = sayac / 100; 
+0170:  MOVFF  48,49
+0174:  MOVLW  64
+0176:  MOVWF  4A
+0178:  RCALL  0004
+017A:  CLRF   45
+017C:  MOVFF  01,44
+....................       
+....................      for (zaman = 0; zaman < 25; zaman++) { 
+0180:  CLRF   47
+0182:  CLRF   46
+0184:  MOVF   47,F
+0186:  BNZ   0220
+0188:  MOVF   46,W
+018A:  SUBLW  18
+018C:  BNC   0220
+....................       delay_ms(13);   
+018E:  MOVLW  0D
+0190:  MOVWF  49
+0192:  RCALL  0070
+....................       output_c(arr_b[birler]); 
+0194:  BCF    FD8.0
+0196:  RLCF   40,W
+0198:  MOVWF  02
+019A:  RLCF   41,W
+019C:  MOVWF  03
+019E:  MOVF   02,W
+01A0:  ADDLW  2C
+01A2:  MOVWF  FE9
+01A4:  MOVLW  00
+01A6:  ADDWFC 03,W
+01A8:  MOVWF  FEA
+01AA:  MOVFF  FEC,4A
+01AE:  MOVF   FED,F
+01B0:  MOVFF  FEF,49
+01B4:  MOVLW  80
+01B6:  MOVWF  F94
+01B8:  MOVFF  49,F8B
+....................       delay_ms(13); 
+01BC:  MOVLW  0D
+01BE:  MOVWF  49
+01C0:  RCALL  0070
+....................       output_c(arr_o[onlar]); 
+01C2:  BCF    FD8.0
+01C4:  RLCF   42,W
+01C6:  MOVWF  02
+01C8:  RLCF   43,W
+01CA:  MOVWF  03
+01CC:  MOVF   02,W
+01CE:  ADDLW  18
+01D0:  MOVWF  FE9
+01D2:  MOVLW  00
+01D4:  ADDWFC 03,W
+01D6:  MOVWF  FEA
+01D8:  MOVFF  FEC,4A
+01DC:  MOVF   FED,F
+01DE:  MOVFF  FEF,49
+01E2:  MOVLW  80
+01E4:  MOVWF  F94
+01E6:  MOVFF  49,F8B
+....................       delay_ms(13); 
+01EA:  MOVLW  0D
+01EC:  MOVWF  49
+01EE:  RCALL  0070
+....................       output_c(arr_y[yuzler]); 
+01F0:  BCF    FD8.0
+01F2:  RLCF   44,W
+01F4:  MOVWF  02
+01F6:  RLCF   45,W
+01F8:  MOVWF  03
+01FA:  MOVF   02,W
+01FC:  ADDLW  04
+01FE:  MOVWF  FE9
+0200:  MOVLW  00
+0202:  ADDWFC 03,W
+0204:  MOVWF  FEA
+0206:  MOVFF  FEC,4A
+020A:  MOVF   FED,F
+020C:  MOVFF  FEF,49
+0210:  MOVLW  80
+0212:  MOVWF  F94
+0214:  MOVFF  49,F8B
+0218:  INCF   46,F
+021A:  BTFSC  FD8.2
+021C:  INCF   47,F
+021E:  BRA    0184
+....................        
+....................      } 
+....................      sayac++; 
+0220:  INCF   48,F
+0222:  BRA    0134
+....................        
+....................        
+....................    } 
+....................  
+.................... } 
+0224:  SLEEP 
+
+Configuration Fuses:
+   Word  1: 2100   XT NOOSCSEN
+   Word  2: 0E0C   PUT NOBROWNOUT BORV20 NOWDT WDT128
+   Word  3: 0100   CCP2C1
+   Word  4: 0081   STVREN NOLVP NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

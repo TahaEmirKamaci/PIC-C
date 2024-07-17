@@ -1,0 +1,25 @@
+#include <main.h>
+
+#INT_RB
+void  RB_isr(void) 
+{
+
+}
+// düþen kenar, yükselen kenar olayý harici kesmede var sadece
+void main()
+{
+
+   enable_interrupts(INT_RB);
+   enable_interrupts(GLOBAL);
+   
+   set_tris_b(0xFF);
+   set_tris_c(0x00);
+   
+   output_c(0x00);
+
+   while(TRUE)
+   {
+      
+   }
+
+}

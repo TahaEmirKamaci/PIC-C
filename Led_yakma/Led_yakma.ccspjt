@@ -1,0 +1,19 @@
+[PROJECT]
+Target=Led_yakma.hex
+Processor_Text=PIC18F452
+CCSVersion=5.007
+Compiler=PCH
+[Target Data]
+FileList=Led_yakma.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[Led_yakma.c]
+Type=4
+[mru-list]
+1=Led_yakma.c
+[Units]
+Count=1
+1=Led_yakma (main)
+[Opened Files]
+1=Led_yakma.c
+2=

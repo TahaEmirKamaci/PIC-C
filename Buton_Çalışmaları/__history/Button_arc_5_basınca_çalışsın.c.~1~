@@ -1,0 +1,11 @@
+#include <Button_arc_5_basýnca_çalýþsýn.h>
+
+void main()
+{
+
+	while(TRUE)
+	{
+		//TODO: User Code
+	}
+
+}

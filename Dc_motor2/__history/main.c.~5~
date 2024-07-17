@@ -1,0 +1,21 @@
+#include <main.h>
+
+void main()
+{
+   
+   set_tris_a(0xFF);
+   set_tris_b(0x00);
+   
+   output_b(0x00);
+
+   while(TRUE)
+   {
+      if(input(pin_A0) == 1)
+      {
+         delay_ms(20);
+         while(input(pin_A0) == 1); // bekle
+         delay_ms(20);
+      }
+   }
+
+}

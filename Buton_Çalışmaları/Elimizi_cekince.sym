@@ -1,0 +1,59 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+005     main.@SCRATCH1
+F83     PSP_DATA
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  main
+000004  @cinit1
+000010  @cinit2
+
+Project Directory:
+    C:\z_ÖZEL\Ders\PIC C denemeler\Buton_Çalýþmalarý\
+
+Project Files:
+    Elimizi_cekince.c                                       [12-Mar-24 15:54  CRC=D872A938]
+    Elimizi_cekince.h                                       [12-Mar-24 15:35  CRC=D8102B21]
+    ..\..\..\..\Program Files (x86)\PICC\Devices\18F452.h   [21-Haz-13 16:05  CRC=8BB2C0D6]
+
+Source signature=C7E85605
+
+Units:
+    Elimizi_cekince (main)
+
+Compiler Settings:
+    Processor:      PIC18F452
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   Elimizi_cekince.xsym
+    Errors:      Elimizi_cekince.err
+    Ext Symbols: Elimizi_cekince.esym
+    INHX32:      Elimizi_cekince.hex
+    Symbols:     Elimizi_cekince.sym
+    List:        Elimizi_cekince.lst
+    Debug/COFF:  Elimizi_cekince.cof
+    Project:     Elimizi_cekince.ccspjt
+    Call Tree:   Elimizi_cekince.tre
+    Statistics:  Elimizi_cekince.STA

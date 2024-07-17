@@ -1,0 +1,16 @@
+[PROJECT]
+Target=C:\Users\Bengi\Desktop\uygulamalar\Mikroiþlemciler\3lü_segment_ortak_anot\main.hex
+Processor_Text=PIC18F452
+CCSVerions=5.007
+Compiler=PCH
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[C:\Users\Bengi\Desktop\uygulamalar\Mikroiþlemciler\3lü_segment_ortak_anot\main]
+Type=4
+[mru-list]
+1=main.c
+[Units]
+Count=1
+1=main (main)

@@ -1,0 +1,17 @@
+#include <main.h>
+
+void main()
+{
+   set_tris_b(0x00);
+   set_tris_a(0xff);
+   
+   int sayac;
+   output_b(0x00);
+   
+   while(TRUE)
+   {
+      if(input(pin_A1) == 1)
+         delay_us(200);
+   }
+
+}

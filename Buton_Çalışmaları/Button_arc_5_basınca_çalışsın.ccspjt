@@ -1,0 +1,16 @@
+[PROJECT]
+Target=C:\z_ÖZEL\Ders\PIC C denemeler\Buton_Çalýþmalarý\Button_arc_5_basýnca_çalýþsýn.hex
+Processor_Text=PIC18F452
+CCSVerions=5.007
+Compiler=PCH
+[Target Data]
+FileList=Button_arc_5_basýnca_çalýþsýn.c
+[Directories]
+Include=
+[C:\z_ÖZEL\Ders\PIC C denemeler\Buton_Çalýþmalarý\Button_arc_5_basýnca_çalýþsýn]
+Type=4
+[mru-list]
+1=Button_arc_5_basýnca_çalýþsýn.c
+[Units]
+Count=1
+1=Button_arc_5_basýnca_çalýþsýn (main)

@@ -1,0 +1,184 @@
+CCS PCH C Compiler, Version 5.007, 61971               29-Nis-24 15:48
+
+               Filename:   C:\Users\Bengi\Desktop\uygulamalar\Mikroiþlemciler\harici_kesme\main.lst
+
+               ROM used:   290 bytes (1%)
+                           Largest free fragment is 32474
+               RAM used:   22 (1%) at main() level
+                           25 (2%) worst case
+               Stack used: 1 locations (0 in main + 1 for interrupts)
+               Stack size: 31
+
+*
+0000:  GOTO   00F8
+*
+0008:  MOVWF  04
+000A:  MOVFF  FD8,05
+000E:  MOVFF  FE0,06
+0012:  MOVLB  0
+0014:  MOVFF  FE9,0C
+0018:  MOVFF  FEA,07
+001C:  MOVFF  FE1,08
+0020:  MOVFF  FE2,09
+0024:  MOVFF  FD9,0A
+0028:  MOVFF  FDA,0B
+002C:  MOVFF  FF3,12
+0030:  MOVFF  FF4,13
+0034:  MOVFF  FFA,14
+0038:  MOVFF  00,0E
+003C:  MOVFF  01,0F
+0040:  MOVFF  02,10
+0044:  MOVFF  03,11
+0048:  BTFSS  FF2.4
+004A:  GOTO   0054
+004E:  BTFSC  FF2.1
+0050:  GOTO   00BE
+0054:  MOVFF  0E,00
+0058:  MOVFF  0F,01
+005C:  MOVFF  10,02
+0060:  MOVFF  11,03
+0064:  MOVFF  0C,FE9
+0068:  MOVFF  07,FEA
+006C:  BSF    07.7
+006E:  MOVFF  08,FE1
+0072:  MOVFF  09,FE2
+0076:  MOVFF  0A,FD9
+007A:  MOVFF  0B,FDA
+007E:  MOVFF  12,FF3
+0082:  MOVFF  13,FF4
+0086:  MOVFF  14,FFA
+008A:  MOVF   04,W
+008C:  MOVFF  06,FE0
+0090:  MOVFF  05,FD8
+0094:  RETFIE 0
+.................... #include <main.h> 
+.................... #include <18F452.h> 
+.................... //////// Standard Header file for the PIC18F452 device //////////////// 
+.................... #device PIC18F452 
+....................  
+.................... #list 
+....................  
+.................... #device ADC=16 
+....................  
+.................... #FUSES NOWDT                 	//No Watch Dog Timer 
+.................... #FUSES WDT128                	//Watch Dog Timer uses 1:128 Postscale 
+.................... #FUSES NOBROWNOUT            	//No brownout reset 
+.................... #FUSES NOLVP                 	//No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+....................  
+.................... #use delay(crystal=4000000) 
+0096:  CLRF   FEA
+0098:  MOVLW  18
+009A:  MOVWF  FE9
+009C:  MOVF   FEF,W
+009E:  BZ    00BC
+00A0:  MOVLW  01
+00A2:  MOVWF  01
+00A4:  CLRF   00
+00A6:  DECFSZ 00,F
+00A8:  BRA    00A6
+00AA:  DECFSZ 01,F
+00AC:  BRA    00A4
+00AE:  MOVLW  4A
+00B0:  MOVWF  00
+00B2:  DECFSZ 00,F
+00B4:  BRA    00B2
+00B6:  BRA    00B8
+00B8:  DECFSZ FEF,F
+00BA:  BRA    00A0
+00BC:  RETURN 0
+.................... #use FIXED_IO( B_outputs=PIN_B5 ) 
+.................... #use FIXED_IO( D_outputs=PIN_D0 ) 
+....................  
+....................  
+....................  
+.................... #INT_EXT 
+.................... void  EXT_isr(void)  
+.................... { 
+....................    int sayac; 
+....................     
+....................    for(sayac = 0; sayac < 5; sayac++) { 
+00BE:  CLRF   16
+00C0:  MOVF   16,W
+00C2:  SUBLW  04
+00C4:  BNC   00F2
+....................       output_high(pin_d0); 
+00C6:  MOVLW  FE
+00C8:  MOVWF  F95
+00CA:  BSF    F8C.0
+....................       delay_ms(500); 
+00CC:  MOVLW  02
+00CE:  MOVWF  17
+00D0:  MOVLW  FA
+00D2:  MOVWF  18
+00D4:  RCALL  0096
+00D6:  DECFSZ 17,F
+00D8:  BRA    00D0
+....................       output_low(pin_d0); 
+00DA:  MOVLW  FE
+00DC:  MOVWF  F95
+00DE:  BCF    F8C.0
+....................       delay_ms(500); 
+00E0:  MOVLW  02
+00E2:  MOVWF  17
+00E4:  MOVLW  FA
+00E6:  MOVWF  18
+00E8:  RCALL  0096
+00EA:  DECFSZ 17,F
+00EC:  BRA    00E4
+00EE:  INCF   16,F
+00F0:  BRA    00C0
+....................    } 
+00F2:  BCF    FF2.1
+00F4:  GOTO   0054
+.................... } 
+....................  
+.................... void main() 
+00F8:  CLRF   FF8
+00FA:  BCF    FD0.7
+00FC:  BSF    07.7
+00FE:  BSF    FC1.0
+0100:  BSF    FC1.1
+0102:  BSF    FC1.2
+0104:  BCF    FC1.3
+.................... { 
+....................  
+....................    enable_interrupts(INT_EXT); 
+0106:  BSF    FF2.4
+....................    enable_interrupts(GLOBAL); 
+0108:  MOVLW  C0
+010A:  IORWF  FF2,F
+....................    ext_int_edge(0, H_TO_L); 
+010C:  BCF    FF1.6
+....................  
+....................    set_tris_b(0xFF); 
+010E:  MOVLW  FF
+0110:  MOVWF  F93
+....................    set_tris_d(0x00); 
+0112:  MOVLW  00
+0114:  MOVWF  F95
+....................     
+....................    output_d(0x00); 
+0116:  MOVLW  FE
+0118:  MOVWF  F95
+011A:  CLRF   F8C
+....................     
+....................    while(TRUE) 
+....................    { 
+....................       output_high(pin_d0); 
+011C:  MOVLW  FE
+011E:  MOVWF  F95
+0120:  BSF    F8C.0
+0122:  BRA    011C
+....................    } 
+....................  
+.................... } 
+0124:  SLEEP 
+
+Configuration Fuses:
+   Word  1: 2100   XT NOOSCSEN
+   Word  2: 0E0C   PUT NOBROWNOUT BORV20 NOWDT WDT128
+   Word  3: 0100   CCP2C1
+   Word  4: 0081   STVREN NOLVP NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

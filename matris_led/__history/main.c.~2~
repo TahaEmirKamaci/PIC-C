@@ -1,0 +1,15 @@
+#include <main.h>
+
+int sutun[5] = {0x10, 0x08, 0x04, 0x02, 0x01};
+
+int K[5] = {0x80, 0xF7, 0xEB, 0xDD, 0xBE};
+
+void main()
+{
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

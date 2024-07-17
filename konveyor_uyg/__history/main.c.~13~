@@ -1,0 +1,38 @@
+#include <main.h>
+
+int sayac,i;
+void main()
+{
+   
+   set_tris_a(0xFF);
+   set_tris_b(0x00);
+   
+   output_b(0x00);
+   
+   sayac = 0; 
+
+   while(TRUE)
+   {
+      if(input(pin_A0) == 1) {
+         delay_ms(20);
+         while(input(pin_A0) == 1);
+         sayac++;
+         
+         output_b(0x05);
+         
+         if(sayac == 10){
+            delay_ms(100);
+            output_b(0x00);
+            goto kon2;
+         }
+         
+         kon2: while(sayac > 0) {
+            output_b(0x18);
+            sayac--;
+            
+         }
+               
+      }
+   }
+
+}

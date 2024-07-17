@@ -1,0 +1,45 @@
+
+ROM used:   56/16384 (0%)
+            56/16384 (0%) including unused fragments
+
+            0.1 Average locations per line
+            5.6 Average locations per statement
+
+RAM used:   5/1536 (0%) at main() level
+            5/1536 (0%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   18    10 100  Elimizi_cekince.c
+   12     0   0  Elimizi_cekince.h
+  701     0   0  ..\..\..\..\Program Files (x86)\PICC\Devices\18F452.h
+----- -----
+  731    10 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     52  46    1   169  2.2  main
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               1
+    Statements              10
+    Comments                118
+    Volume (V)              172
+    Difficulty (D)          2.1
+    Effort to implement (E) 358
+    Time to implement (T)   0 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    62
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-07FFE    52  32712  
+
+
+

@@ -1,0 +1,19 @@
+#include <main.h>
+
+void main()
+{
+   set_tris_a(0x11111111);
+   set_tris_b(0x00000000);
+   
+   output_a(0xFF);
+   output_b(0x00);
+   
+   while(TRUE)
+   {
+     if(input(pin_A0)==1){
+         output_b(0b00000001);
+         delay_ms(1000);
+     }
+   }
+
+}
